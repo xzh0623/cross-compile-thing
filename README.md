@@ -1,20 +1,17 @@
 # Cross Compile aarch64 on x86_64 Linux
 
-All package names are based on Arch Linux
+Using an Ubuntu docker to cross compile because yes glibc being too new is a thing
 
-## Build
+## Compile
 
-Install `cmake`, `ninja`, `aarch64-linux-gnu-gcc`, `clang`
-
-```
-cmake -B build -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
-cmake --build build
-```
+Install `docker` and `docker-compose` then run `docker-compose up`
 
 ## Execution
 
 Install `qemu-base`, `qemu-aarch64-static`
 
+> These are Arch package names and IDK if they exist on other distros
+
 ```
-qemu-aarch64-static -L /usr/aarch64-linux-gnu ./build/CrossCompile
+qemu-aarch64-static -L /usr/aarch64-linux-gnu ./aarch64_build/CrossCompile
 ```
